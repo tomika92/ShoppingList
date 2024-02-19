@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="search.component.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="http://localhost:8080/public/js/products.js" defer></script>
+    <title>SEARCH</title>
+</head>
+<body>
+    <div class="container_list">
+        <div class="home2">
+            <button id="arrow" (click)="goBack()">
+                <img id="arrowIcon" src="../../assets/arrow.svg">
+            </button>
+            <input name="search" type="search" placeholder="Search product" [(ngModel)]="name" (keyup.enter)="searchByName()" autocomplete="off">
+        </div>
+        <div class="block2" >
+            <section *ngFor="let product of productLists; let i = index" [id]="i">
+                <div class="ob11" [id]="product.productId">
+                    <img id="checkS" [src]="product.bought === 0 ? '../../assets/emptyCircle.svg' : '../../assets/circlePlus.svg'" (click)="changeBoughtStatus(product, i)">
+                    <p>{{product.productName}}</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,28 @@
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet">
+    <title>REGISTER</title>
+</head>
+<body>
+    <div class="container">
+        <div class="logo2">
+            <img src="../../assets/logo.svg">
+        </div>
+        <div class="register-container">
+            <p id="create">Create an account</p>
+            <form class="register" (ngSubmit)="registerUser()" [formGroup]="registerForm">
+                <div class="messages">
+                    {{userMessage}}
+                </div>
+                <input formControlName="email" type="email" placeholder="email">
+                <input formControlName="login" type="text" placeholder="login">
+                <input formControlName="password" type="password" placeholder="password">
+                <input formControlName="repeat_password" type="password" placeholder="repeat password">
+                <button [disabled]="!registerForm.valid" type="submit" id="button1">CREATE</button>
+            </form>
+            <form class="login">
+                <button id="button2" [routerLink]="['']" type="submit">LOGIN</button>
+            </form>
+        </div>
+    </div>
+</body>

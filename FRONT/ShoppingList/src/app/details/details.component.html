@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="details.component.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet">
+    <title>LIST DETAILS</title>
+</head>
+<body>
+    <div class="container_list">
+        <div class="home2">
+            <button id="arrow" (click)="goBack()">
+                <img id="arrowIcon" src="../../assets/arrow.svg">
+            </button>
+            <p id="demo">{{listName}}</p>
+        </div>
+        <div class="plus">
+            <button id="addProduct" (click)="goToSearch()">
+                <img id="plusIcon" src="../../assets/plus.svg">
+            </button>
+        </div>
+        <div class="block" id="0">
+                <section class="ob11" *ngFor="let product of productsList; let i = index" [id]="i" >
+                    <div class="prod" [id]="product.productId">
+                        <img id="check" (click)="changeBought(product, i)" [src]="product.bought === 1 ? '../../assets/emptyCircle.svg' : '../../assets/circleCheck.svg'">
+                        <input id="napis" [value]="product.productName" >
+                        <input name="quantity" type="text">
+                        <select name="units" id="unit">
+                            <option value="none"></option>
+                            <option value="l">l</option>
+                            <option value="kg">kg</option>
+                        </select>
+                    </div>
+                </section>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,180 @@
+.container_list {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    font-family: 'Junge', serif;
+    color: rgb(37 39 37);
+    font-size: 40px;
+    font-weight: bold;
+    overflow: auto;
+    width: 90%;
+    padding-left: 0.5em;
+    margin: 0;
+}
+
+.block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    margin: 1em 1em 0em 3em;
+}
+
+section {
+    display: flex;
+    flex: 0 0 49%;
+    flex-direction: row;
+    background: rgb(37 39 37 / 88%);
+    margin: 0.1em;
+    border-radius: 10px;
+    align-self: start;
+}
+
+#arrow {
+    background: rgba(0, 0, 0, 0);
+    font-size: 40px;
+    border: none;
+    text-align: left;
+}
+
+#add_user{
+    background: rgba(0, 0, 0, 0);
+    font-size: 40px;
+    border: none;
+    text-align: right;
+    padding-right: 1em;
+}
+
+.home2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 1em 2em 1em 2em;
+}
+
+#check {
+    font-size: 35px;
+    padding: 0.3em;
+    width: 2.3em;
+}
+
+#napis {
+    background: rgb(37 39 37 / 0%);
+    border: none;
+    color: #e0e4f5;
+    font-size: 24px;
+    margin: 0em;
+    width: 90%;
+    text-align: left;
+    line-height: 2.5em;
+    padding-left: 0.5em;
+    font-family: 'Junge', serif;
+}
+
+input {
+    background: rgb(37 39 37 / 50%);
+    font-size: 16px;
+    font-weight: normal;
+    width: 10%;
+    line-height: 3em;
+    letter-spacing: 0.1em;
+    border: none;
+    margin: 0.2em;
+    border-radius: 20px;
+    font-family: 'Junge', serif;
+    text-align: center;
+}
+
+select {
+    width: 10%;
+    background: rgb(37 39 37 / 50%);
+    color: #e0e4f5;
+    border: none;
+    margin: 0.2em;
+    border-radius: 20px;
+    font-family: 'Junge', serif;
+    padding: 0.2em;
+    font-size: 16px;
+    height: 3em;
+}
+
+select option {
+    background: rgb(37 39 37 / 80%);
+    font-family: 'Junge', serif;
+    font-size: 16px;
+}
+
+#arrowIcon{
+    height: 1.3em;
+}
+
+#userIcon{
+    height: 1.1em;
+}
+
+.plus {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#addProduct {
+    background: rgba(0, 0, 0, 0);
+    font-size: 50px;
+    border: none;
+    text-align: center;
+}
+
+#plusIcon {
+    height: 1.3em;
+}
+
+.prod {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+@media only screen and (max-width: 500px) {
+    section {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .home2 {
+        padding: 2.5em 1em 1em 2em;
+        margin: 0em;
+    }
+
+    #add_user {
+        padding-right: 0em;
+    }
+
+    #addProduct{
+        margin-top: 0.5em;
+    }
+
+    .block {
+        margin: 0.5em;
+        margin-left: 0.7em;
+    }
+
+    input {
+        width: 15%;
+    }
+
+    select {
+        width: 20%;
+    }
+
+    #napis{
+        padding-top: unset;
+    }
+}

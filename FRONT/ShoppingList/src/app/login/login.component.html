@@ -1,0 +1,26 @@
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet">
+    <title>LOGIN</title>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="../../assets/logo.svg">
+        </div>
+        <div class="login-container">
+            <form class="login" (ngSubmit)="loginUser()" [formGroup]="loginForm">
+                <div class="messages">
+                    {{userMessage}}
+                </div>
+                <input formControlName="login" type="text" placeholder="login">
+                <input formControlName="password" type="password" placeholder="password">
+                <button [disabled]="!loginForm.valid" id="button1" type="submit">CONTINUE</button>
+            </form>
+            <form class="register" action="register" method="GET">
+                <button id="button2" [routerLink]="['register']" type="submit">REGISTER</button>
+            </form>
+        </div>
+    </div>
+</body>
+

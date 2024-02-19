@@ -1,0 +1,148 @@
+.container_list {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.home {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 1em;
+    justify-content: space-between;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    width: 90%;
+}
+
+p {
+    font-family: 'Junge', serif;
+    color: rgb(37 39 37);
+    font-size: 40px;
+    letter-spacing: 0.2em;
+    font-weight: bold;
+    overflow: auto;
+    width: 90%;
+    padding-left: 0.5em;
+    margin-bottom: unset;
+}
+
+.plus {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#plusb {
+    background: rgba(0, 0, 0, 0);
+    font-size: 50px;
+    border: none;
+    text-align: center;
+}
+
+.list {
+    display: flex;
+    width: 95%;
+    font-family: 'Junge', serif;
+    flex-direction: column;
+    margin: 1em;
+}
+
+div.list1 {
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    background: rgb(37 39 37 / 88%);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.listform {
+    padding-left: 2em;
+    align-items: normal;
+}
+
+input {
+    background: rgb(37 39 37/ 0%);
+    border: none;
+    color: #e0e4f5;
+    font-size: 24px;
+    margin: 0em;
+    width: 70%;
+    text-align: left;
+    line-height: 2.5em;
+    font-family: 'Junge', serif;
+}
+
+input::placeholder {
+    color: #676161;
+}
+
+#goToDetails, #remove {
+    align-items: unset;
+    padding-right: 1.7em;
+    border: 0px;
+    background: rgba(0, 0, 0, 0);
+}
+
+#logout, #adminPanel {
+    align-items: unset;
+    border: 0px;
+    background: rgba(0, 0, 0, 0);
+}
+
+#logoutIcon {
+    height: 3em;
+    padding-right: 1em;
+    padding-left: 1em;
+}
+
+#plusIcon {
+    height: 1.3em;
+}
+
+#goToDetailsIcon{
+    height: 2.4em;
+}
+
+#removeIcon{
+    height: 2.1em;
+}
+
+#adminPanelIcon{
+    height: 2.5em;
+}
+
+@media only screen and (max-width: 500px) {
+    #plusb {
+        margin-top: 0.7em;
+    }
+
+    .home {
+        height: 10vw;
+    }
+
+    div.list1{
+        padding-right: 1em;
+    }
+    p{
+        margin: unset;
+        padding-top: 1em;
+    }
+
+    #logoutIcon, #adminPanelIcon {
+        margin-top: 2.5em;
+    }
+
+    #goToDetails, #remove{
+        padding-right: 0.2em;
+    }
+}

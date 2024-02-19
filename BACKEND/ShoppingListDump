@@ -1,0 +1,441 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 16.0
+-- Dumped by pg_dump version 16.0
+
+-- Started on 2023-11-08 21:34:54
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 216 (class 1259 OID 16900)
+-- Name: bought; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.bought (
+    list_id uuid NOT NULL,
+    product_id bigint NOT NULL,
+    bought integer NOT NULL
+);
+
+
+ALTER TABLE public.bought OWNER TO postgres;
+
+--
+-- TOC entry 217 (class 1259 OID 16905)
+-- Name: lists; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.lists (
+    lists_id uuid NOT NULL,
+    created_at date,
+    list_name character varying(255),
+    user_id uuid
+);
+
+
+ALTER TABLE public.lists OWNER TO postgres;
+
+--
+-- TOC entry 218 (class 1259 OID 16910)
+-- Name: products; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.products (
+    products_id bigint NOT NULL,
+    product_name character varying(255)
+);
+
+
+ALTER TABLE public.products OWNER TO postgres;
+
+--
+-- TOC entry 223 (class 1259 OID 16938)
+-- Name: products_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.products_seq
+    START WITH 1
+    INCREMENT BY 50
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.products_seq OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 16915)
+-- Name: role; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.role (
+    role_id bigint NOT NULL,
+    role character varying(255),
+    CONSTRAINT role_role_check CHECK (((role)::text = ANY ((ARRAY['USER'::character varying, 'ADMIN'::character varying])::text[])))
+);
+
+
+ALTER TABLE public.role OWNER TO postgres;
+
+--
+-- TOC entry 224 (class 1259 OID 16939)
+-- Name: role_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.role_seq
+    START WITH 1
+    INCREMENT BY 50
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.role_seq OWNER TO postgres;
+
+--
+-- TOC entry 220 (class 1259 OID 16921)
+-- Name: user_roles; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.user_roles (
+    user_id uuid NOT NULL,
+    role_id bigint NOT NULL
+);
+
+
+ALTER TABLE public.user_roles OWNER TO postgres;
+
+--
+-- TOC entry 221 (class 1259 OID 16924)
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    users_id uuid NOT NULL,
+    created_at date,
+    logged integer NOT NULL,
+    login character varying(255),
+    password character varying(255)
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- TOC entry 222 (class 1259 OID 16931)
+-- Name: users_details; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users_details (
+    users_details_id bigint NOT NULL,
+    email character varying(255),
+    user_id uuid
+);
+
+
+ALTER TABLE public.users_details OWNER TO postgres;
+
+--
+-- TOC entry 225 (class 1259 OID 16940)
+-- Name: users_details_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_details_seq
+    START WITH 1
+    INCREMENT BY 50
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.users_details_seq OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1259 OID 16626)
+-- Name: users_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_seq
+    START WITH 1
+    INCREMENT BY 50
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.users_seq OWNER TO postgres;
+
+--
+-- TOC entry 4826 (class 0 OID 16900)
+-- Dependencies: 216
+-- Data for Name: bought; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.bought (list_id, product_id, bought) FROM stdin;
+b71e31c7-9dbe-4cc1-88d1-9c0d27b50dd0	4	1
+b71e31c7-9dbe-4cc1-88d1-9c0d27b50dd0	6	1
+b71e31c7-9dbe-4cc1-88d1-9c0d27b50dd0	8	1
+b71e31c7-9dbe-4cc1-88d1-9c0d27b50dd0	3	1
+b71e31c7-9dbe-4cc1-88d1-9c0d27b50dd0	7	2
+b71e31c7-9dbe-4cc1-88d1-9c0d27b50dd0	5	2
+b71e31c7-9dbe-4cc1-88d1-9c0d27b50dd0	13	1
+\.
+
+
+--
+-- TOC entry 4827 (class 0 OID 16905)
+-- Dependencies: 217
+-- Data for Name: lists; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.lists (lists_id, created_at, list_name, user_id) FROM stdin;
+b71e31c7-9dbe-4cc1-88d1-9c0d27b50dd0	2023-11-07	New	72ef8eaa-c806-4b49-99f9-14dbb4574032
+a83eda9d-9783-488d-ae86-cd8b6543d40a	2023-11-07	dzisiejsza	72ef8eaa-c806-4b49-99f9-14dbb4574032
+\.
+
+
+--
+-- TOC entry 4828 (class 0 OID 16910)
+-- Dependencies: 218
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.products (products_id, product_name) FROM stdin;
+1	milk
+2	tea
+3	butter
+4	bread
+5	lemon
+6	juice
+7	eggs
+8	salt
+9	pepper
+10	onion
+11	chocolate
+13	bananas
+14	carrot
+12	cat food
+\.
+
+
+--
+-- TOC entry 4829 (class 0 OID 16915)
+-- Dependencies: 219
+-- Data for Name: role; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.role (role_id, role) FROM stdin;
+1	USER
+2	ADMIN
+\.
+
+
+--
+-- TOC entry 4830 (class 0 OID 16921)
+-- Dependencies: 220
+-- Data for Name: user_roles; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.user_roles (user_id, role_id) FROM stdin;
+72ef8eaa-c806-4b49-99f9-14dbb4574032	1
+72ef8eaa-c806-4b49-99f9-14dbb4574032	2
+\.
+
+
+--
+-- TOC entry 4831 (class 0 OID 16924)
+-- Dependencies: 221
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (users_id, created_at, logged, login, password) FROM stdin;
+72ef8eaa-c806-4b49-99f9-14dbb4574032	2023-11-07	0	tomika	8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
+\.
+
+
+--
+-- TOC entry 4832 (class 0 OID 16931)
+-- Dependencies: 222
+-- Data for Name: users_details; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users_details (users_details_id, email, user_id) FROM stdin;
+2	dgukhy@op.pl	72ef8eaa-c806-4b49-99f9-14dbb4574032
+\.
+
+
+--
+-- TOC entry 4841 (class 0 OID 0)
+-- Dependencies: 223
+-- Name: products_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.products_seq', 1, false);
+
+
+--
+-- TOC entry 4842 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: role_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.role_seq', 51, true);
+
+
+--
+-- TOC entry 4843 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: users_details_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_details_seq', 51, true);
+
+
+--
+-- TOC entry 4844 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: users_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_seq', 1451, true);
+
+
+--
+-- TOC entry 4663 (class 2606 OID 16904)
+-- Name: bought bought_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bought
+    ADD CONSTRAINT bought_pkey PRIMARY KEY (list_id, product_id);
+
+
+--
+-- TOC entry 4665 (class 2606 OID 16909)
+-- Name: lists lists_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.lists
+    ADD CONSTRAINT lists_pkey PRIMARY KEY (lists_id);
+
+
+--
+-- TOC entry 4667 (class 2606 OID 16914)
+-- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products
+    ADD CONSTRAINT products_pkey PRIMARY KEY (products_id);
+
+
+--
+-- TOC entry 4669 (class 2606 OID 16920)
+-- Name: role role_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.role
+    ADD CONSTRAINT role_pkey PRIMARY KEY (role_id);
+
+
+--
+-- TOC entry 4673 (class 2606 OID 16937)
+-- Name: users_details uk_m2cnpu820s6ciirwbmvlw8qwd; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_details
+    ADD CONSTRAINT uk_m2cnpu820s6ciirwbmvlw8qwd UNIQUE (user_id);
+
+
+--
+-- TOC entry 4675 (class 2606 OID 16935)
+-- Name: users_details users_details_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_details
+    ADD CONSTRAINT users_details_pkey PRIMARY KEY (users_details_id);
+
+
+--
+-- TOC entry 4671 (class 2606 OID 16930)
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (users_id);
+
+
+--
+-- TOC entry 4681 (class 2606 OID 16966)
+-- Name: users_details fkdsdvybgotfuw6xs6ygbwj740l; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_details
+    ADD CONSTRAINT fkdsdvybgotfuw6xs6ygbwj740l FOREIGN KEY (user_id) REFERENCES public.users(users_id);
+
+
+--
+-- TOC entry 4678 (class 2606 OID 16951)
+-- Name: lists fke59kv852m4k3g8kmefph4i3kx; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.lists
+    ADD CONSTRAINT fke59kv852m4k3g8kmefph4i3kx FOREIGN KEY (user_id) REFERENCES public.users(users_id);
+
+
+--
+-- TOC entry 4676 (class 2606 OID 16941)
+-- Name: bought fkf7nboo8ham52wpbrc2h009nij; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bought
+    ADD CONSTRAINT fkf7nboo8ham52wpbrc2h009nij FOREIGN KEY (list_id) REFERENCES public.lists(lists_id);
+
+
+--
+-- TOC entry 4679 (class 2606 OID 16961)
+-- Name: user_roles fkhfh9dx7w3ubf1co1vdev94g3f; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.user_roles
+    ADD CONSTRAINT fkhfh9dx7w3ubf1co1vdev94g3f FOREIGN KEY (user_id) REFERENCES public.users(users_id);
+
+
+--
+-- TOC entry 4677 (class 2606 OID 16946)
+-- Name: bought fkouk6ldr7alqmw60sjf63n5q4g; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bought
+    ADD CONSTRAINT fkouk6ldr7alqmw60sjf63n5q4g FOREIGN KEY (product_id) REFERENCES public.products(products_id);
+
+
+--
+-- TOC entry 4680 (class 2606 OID 16956)
+-- Name: user_roles fkrhfovtciq1l558cw6udg0h0d3; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.user_roles
+    ADD CONSTRAINT fkrhfovtciq1l558cw6udg0h0d3 FOREIGN KEY (role_id) REFERENCES public.role(role_id);
+
+
+-- Completed on 2023-11-08 21:34:54
+
+--
+-- PostgreSQL database dump complete
+--
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="my-list.component.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="./public/js/my_lists.js" defer></script>
+    <title>MY LIST</title>
+</head>
+<body>
+    <div class="container_list">
+        <div class="home">
+            <p>MY LIST</p>
+                <button id="adminPanel" *ngIf="userRole === 'ADMIN'" (click)="goToAdminPanel()">
+                    <img id="adminPanelIcon" src="../../assets/user.svg">
+                </button>
+                <button id="logout" (click)="logoutUser()">
+                    <img id="logoutIcon" src="../../assets/logout.svg">
+                </button>
+        </div>
+        <div class="plus">
+            <button id="plusb" (click)="addNewList()">
+                <img id="plusIcon" src="../../assets/plus.svg">
+            </button>
+        </div>
+        <section class="list" *ngFor="let list of userLists; let i = index" [id]="i">
+          <div class="list1" [id]="list.listsId">
+            <form class="listform" action="add_list" method="POST">
+                <input name="text" type="text" id="text" maxlength="16" placeholder="NEW LIST" [(ngModel)]="list.listName" (keyup.enter)="updateListName(list, i)">
+            </form>
+            <button id="goToDetails" (click)="goToDetails(list.listsId)">
+                <img id="goToDetailsIcon" src="../../assets/square-plus.svg">
+            </button>
+            <button id="remove" (click)="removeList(i, list.listsId)">
+                <img id="removeIcon" src="../../assets/trash.svg">
+            </button>
+          </div>
+        </section>
+    </div>
+</body>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="admin-panel.component.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet">
+    <title>ADMIN PANEL</title>
+</head>
+<body>
+    <div class="container_list">
+        <div class="home2">
+            <button id="arrow" (click)="goBack()">
+                <img id="arrowIcon" src="../../assets/arrow.svg">
+            </button>
+            <input name="search" type="search" placeholder="Search user" [(ngModel)]="loginOrEmail" (keyup.enter)="searchByLoginOrEmail()" autocomplete="off">
+        </div>
+        <section class="list" *ngFor="let user of users; let i = index" [id]="i">
+            <div class="list1"[id]="user.userId">
+                <p>{{user.login}}, {{user.email}}</p>
+                <button id="changeAdminRole" [matTooltip]="tooltipText">
+                    <img id="changeAdminRoleIcon" [src]="user.role === 'ADMIN' ? '../../assets/adminRoleGreen.svg' : '../../assets/adminRoleWhite.svg'" (click)="changeAdminRole(user, i)">
+                </button>
+                <button id="remove" (click)="removeUser(user, i)">
+                  <img id="removeIcon" src="../../assets/trash.svg">
+                </button>
+            </div>
+        </section>
+    </div>
+</body>
