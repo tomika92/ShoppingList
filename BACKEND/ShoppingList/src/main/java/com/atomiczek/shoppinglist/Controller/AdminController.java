@@ -47,6 +47,14 @@ public class AdminController {
         this.kafkaProducerService = kafkaProducerService;
     }
 
+    public AdminController(UserRepository userRepository, UserDetailsRepository userDetailsRepository, RoleRepository roleRepository, UserService userService, KafkaProducerService kafkaProducerService) {
+        this.userRepository = userRepository;
+        this.userDetailsRepository = userDetailsRepository;
+        this.roleRepository = roleRepository;
+        this.userService = userService;
+        this.kafkaProducerService = kafkaProducerService;
+    }
+
     @GetMapping("/getAllUsers")
     public ResponseEntity<List<UserDTO>> getAllUsers(){
         try{
@@ -66,7 +74,9 @@ public class AdminController {
             if(user != null){
                 int logged = user.getLogged();
                 userDetailsRepository.delete(user.getDetails());
-                user.getRoles().clear();
+                if(user.getRoles() != null) {
+                    user.getRoles().clear();
+                }
                 userRepository.delete(user);
 
                 if(logged == 1){

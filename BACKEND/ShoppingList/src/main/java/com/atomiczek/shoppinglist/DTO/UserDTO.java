@@ -16,9 +16,9 @@ public class UserDTO {
     private String password;
     private String role;
 
-    public UserDTO(String login, String password) {
+    public UserDTO(String login, String email) {
         this.login = login;
-        this.password = password;
+        this.email = email;
     }
     public UserDTO(UUID userId, String login, String email, String role) {
         this.userId = userId;
@@ -30,6 +30,12 @@ public class UserDTO {
     public UserDTO(UUID userId, String role) {
         this.userId = userId;
         this.role = role;
+    }
+
+    public UserDTO(String login, String email, String password) {
+        this.login = login;
+        this.email = email;
+        this.password = password;
     }
 
     @Override

@@ -3,7 +3,6 @@ package com.atomiczek.shoppinglist.Controller;
 import com.atomiczek.shoppinglist.DTO.UserDTO;
 import com.atomiczek.shoppinglist.Entity.Users;
 import com.atomiczek.shoppinglist.Entity.Users_details;
-import com.atomiczek.shoppinglist.Repository.RoleRepository;
 import com.atomiczek.shoppinglist.Repository.UserDetailsRepository;
 import com.atomiczek.shoppinglist.Repository.UserRepository;
 import com.atomiczek.shoppinglist.Service.UserService;
@@ -26,9 +25,6 @@ public class UserController {
 
     @Autowired
     UserDetailsRepository userDetailsRepository;
-
-    @Autowired
-    RoleRepository roleRepository;
 
     @Autowired
     private UserService userService;
