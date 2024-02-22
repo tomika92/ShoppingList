@@ -9,7 +9,6 @@ import com.atomiczek.shoppinglist.Repository.BoughtRepository;
 import com.atomiczek.shoppinglist.Repository.ListRepository;
 import com.atomiczek.shoppinglist.Repository.ProductsRepository;
 import com.atomiczek.shoppinglist.Service.ProductService;
-import com.atomiczek.shoppinglist.Service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,7 +81,6 @@ public class ProductController {
             logger.error("Exception during adding product to list: {}", e.getMessage());
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     @DeleteMapping("/removeProductFromList/{listId}/{productId}")
@@ -108,7 +106,6 @@ public class ProductController {
             logger.error("Exception during deleting product from list: {}", e.getMessage());
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     @GetMapping("/searchByName/{listId}")

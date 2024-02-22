@@ -134,7 +134,6 @@ public class AdminController {
                     matchingUsersList.add(user);
                 }
             }
-
             return userService.createUsersDto(matchingUsersList);
         } catch (Exception e){
             logger.error("Exception during searching users: {}", e.getMessage());

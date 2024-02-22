@@ -42,7 +42,6 @@ public class ListController {
 
     private static final Logger logger = LogManager.getLogger(ListController.class);
 
-
     @GetMapping("/getUserLists/{id}")
     public ResponseEntity<List<ListDTO>> getUserLists(@PathVariable("id") UUID id) {
         try {
