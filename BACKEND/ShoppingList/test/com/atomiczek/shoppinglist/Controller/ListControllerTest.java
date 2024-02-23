@@ -65,23 +65,24 @@ class ListControllerTest {
         verify(listRepository).findAllByAssignedById(user);
     }
 
-    /*@Test
+    @Test
     public void shouldAddNewListIfUserExist(){
         UUID userID = UUID.randomUUID();
         String listName = "New test list";
         Users user = new Users(userID);
+        user.setUsersId(userID);
         Lists list = new Lists(listName);
-        ListDTO listDTO = new ListDTO(UUID.randomUUID(), list.getListName());
+        ListDTO listDTO = new ListDTO(list.getListsId(), list.getListName());
 
         when(userRepository.findByUsersId(userID)).thenReturn(user);
-        when(listRepository.save(list)).thenReturn(any(Lists.class)).thenReturn(list);
+        when(listRepository.save(any(Lists.class))).thenReturn(list);
 
         ResponseEntity<ListDTO> response = listController.addNewList(userID, listName);
 
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
         assertEquals(listDTO, response.getBody());
         verify(listRepository).save(any(Lists.class));
-    }*/
+    }
 
     @Test
     public void shouldNotAddListAndReturnInternalServerError() {

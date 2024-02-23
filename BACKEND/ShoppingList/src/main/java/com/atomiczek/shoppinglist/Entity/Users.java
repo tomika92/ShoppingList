@@ -28,7 +28,7 @@ public class Users {
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
     @OneToMany(mappedBy = "assignedById", cascade = CascadeType.ALL)
-    private List<Lists> listsID;
+    private List<Lists> listsID = new ArrayList<>();
 
     public Users(String login, String password) {
         this.login = login;
