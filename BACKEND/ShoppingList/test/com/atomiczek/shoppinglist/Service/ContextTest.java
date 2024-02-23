@@ -8,8 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class ContextTest {
 
     @Test
-    public void contextUpTest(){
-
-    }
+    public void contextUpTest(){}
 
 }

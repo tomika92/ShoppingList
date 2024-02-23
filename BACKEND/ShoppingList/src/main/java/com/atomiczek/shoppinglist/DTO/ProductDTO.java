@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductDTO {
-    private Long productId;
+    private long productId;
     private String productName;
     private int bought;
 }

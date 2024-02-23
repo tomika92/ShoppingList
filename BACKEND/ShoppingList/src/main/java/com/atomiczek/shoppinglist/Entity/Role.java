@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,6 +27,9 @@ public class Role {
     private List<Users> users;
 
     public List<Users> getUsers() {
+        if (this.users == null) {
+            this.users = new ArrayList<>();
+        }
         return users;
     }
 

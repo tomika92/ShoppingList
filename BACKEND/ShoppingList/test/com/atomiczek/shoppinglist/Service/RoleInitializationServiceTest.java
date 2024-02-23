@@ -20,13 +20,8 @@ class RoleInitializationServiceTest {
         when(roleRepository.count()).thenReturn(0L);
 
         RoleInitializationService roleInitializationService = new RoleInitializationService(roleRepository);
-
         roleInitializationService.initializeRoles();
 
         verify(roleRepository, times(UserRoleEnum.values().length)).save(any());
-
-
     }
-
-
 }

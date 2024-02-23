@@ -7,7 +7,6 @@ import com.atomiczek.shoppinglist.Repository.UserDetailsRepository;
 import com.atomiczek.shoppinglist.Repository.UserRepository;
 import com.atomiczek.shoppinglist.Service.UserService;
 import com.atomiczek.shoppinglist.enums.UserRoleEnum;
-import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -102,7 +101,6 @@ class UserControllerTest {
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
         assertNull(response.getBody());
         verify(userRepository, never()).save(any(Users.class));
-
     }
 
     @Test
